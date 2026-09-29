@@ -11,10 +11,10 @@
 def is_valid(string: str) -> bool:
     temp = ''
     for char in string:
-        if char.isspace():
-            return False
         if char.isdigit():
             temp += char
+        else:
+            return False
     return len(temp) in [4,5,6] # проверили длину из списка допустимых значений
 
 test = ['4367',
