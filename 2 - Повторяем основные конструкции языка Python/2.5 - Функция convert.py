@@ -12,5 +12,18 @@ def convert(string: str) -> str:
     lower = 0
     upper = 0
     for char in string:
-        if char.islower():
-            lower += 1
+        if char.isalpha():
+            if char.islower():
+                lower += 1
+            else:
+                upper += 1
+    return string.lower() if lower >= upper else string.upper()
+
+test = ['BEEgeek',
+        'pyTHON',
+        'pi31415!',
+        ]
+
+for argument in test:
+    print(convert(argument))
+
