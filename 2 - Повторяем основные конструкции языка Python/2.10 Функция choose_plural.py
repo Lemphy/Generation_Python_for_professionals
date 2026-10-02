@@ -7,23 +7,23 @@
 # количества amount, в следующем формате:
 #
 # <количество> <существительное>
-TWO = 2
-FIVE = 5
 
 def choose_plural(amount: int, declensions: tuple[str, ...]) -> str:
-    temp = amount % 10
-    if temp == 0:
-        temp = FIVE
-
-    if temp >= FIVE:
-        return f'{amount} {declensions[2]}'
-    elif temp >= TWO:
-        return f'{amount} {declensions[1]}'
+    if amount % 100 in range(11,15):
+        index = 2
     else:
-        return f'{amount} {declensions[0]}'
+        temp = amount % 10
+        if temp == 0 or temp >= 5:
+            index = 2
+        elif temp >= 2:
+            index = 1
+        else:
+            index = 0
 
-test = [(21, ('пример', 'примера', 'примеров')),
-        (100, ('гвоздь', 'гвоздя', 'гвоздей')),
+    return f'{amount} {declensions[index]}'
+
+test = [(2, ('пример', 'примера', 'примеров')),
+        (14, ('гвоздь', 'гвоздя', 'гвоздей')),
         (8, ('яблоко', 'яблока', 'яблок')),
         ]
 
